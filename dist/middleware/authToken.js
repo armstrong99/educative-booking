@@ -54,7 +54,7 @@ exports.default = (function (req, res, next) { return __awaiter(void 0, void 0, 
                 return [4 /*yield*/, axios_1.default.post(_api, { _id: user_id, token: token })];
             case 2:
                 data = (_b.sent()).data;
-                if (data === null || data === void 0 ? void 0 : data._id) {
+                if (data === null || data === void 0 ? void 0 : data.data._id) {
                     return [2 /*return*/, next()];
                 }
                 else
@@ -62,7 +62,6 @@ exports.default = (function (req, res, next) { return __awaiter(void 0, void 0, 
                 return [3 /*break*/, 4];
             case 3:
                 error_1 = _b.sent();
-                console.log(error_1);
                 return [2 /*return*/, res.status(401).send({
                         status: "fail",
                         message: "User with email-" + email + " may not be logged in or does not exist",

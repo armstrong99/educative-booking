@@ -9,7 +9,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
   try {
     let { data } = await axios.post(_api, { _id: user_id, token });
-    console.log(data)
+
     if (data?.data._id) {
       return next();
     } else throw new Error("invalid token, user may not be logged in");
