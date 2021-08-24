@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+model flightBookings {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  leavingAt DateTime @default(now())
+  returningAt DateTime 
+  country   String   @db.VarChar(255)
+  state   String   @db.VarChar(255)
+  destination   String   @db.VarChar(255)
+  tripType   String   @db.VarChar(255)
+  passangerSize   Int  @default(1)
+  promoCode String @db.VarChar(255)
+  amount Int 
+  email String @db.VarChar(255)
+  user_id String @db.VarChar(255)
+
+  @@map("flightBooking")
+}
