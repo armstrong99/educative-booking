@@ -2,6 +2,7 @@ import express from "express";
 import logger from "morgan";
 import cors from "cors";
 import flightRoute from "../routes/flight";
+import visaRoute from "../routes/visa";
 require("dotenv").config();
 
 const app = express();
@@ -23,6 +24,9 @@ app.get("/favicon.ico", (req, res) => {
 //define router here
 
 app.use("/api/booking/flight", flightRoute);
+
+
+app.use("/api/visa", visaRoute);
 
 app.listen(PORT, () => {
   console.log("listening on port", PORT);

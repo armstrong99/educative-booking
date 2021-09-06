@@ -11,6 +11,30 @@ generator client {
   output = "../node_modules/.prisma/client"
 }
 
+model visaBookings {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  leavingAt DateTime @default(now())
+  returningAt DateTime 
+  country   String   @db.VarChar(255)
+  state   String   @db.VarChar(255)
+  amount Int 
+  email String @db.VarChar(255)
+  user_id String @db.VarChar(255)
+  passportType String @db.VarChar(255)
+  passportNumber String @db.VarChar(255)
+  passportIssuedCountry String @db.VarChar(255)
+  passportIssuedDate String @db.VarChar(255)
+  passportExpirationDate String @db.VarChar(255)
+  employer String @db.VarChar(255)
+  schoolName String @db.VarChar(255)
+  monthyIncome String @db.VarChar(255)
+ 
+  @@map("visaBooking")
+}
+
+
 model flightBookings {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
@@ -26,6 +50,6 @@ model flightBookings {
   amount Int 
   email String @db.VarChar(255)
   user_id String @db.VarChar(255)
-
-  @@map("flightBooking")
+ 
+   @@map("flightBooking")
 }
