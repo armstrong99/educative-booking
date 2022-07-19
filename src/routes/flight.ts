@@ -1,14 +1,18 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
+import * as express from "express";
 import flightController from "../controllers/flight";
-import authToken from "../middleware/authToken";
  
 const flightRoute = express.Router();
 
 flightRoute.get("/", async (req: Request, res: Response) => {
-  return res.send("I am working!!!");
-});
+  return res.send("I am flying!!!");
+});done
 
 //you can add middle ware for validating token,etc
-flightRoute.post("/", authToken, flightController);
+flightRoute.post("/", flightController.bookFlight);
+
+flightRoute.get("/get-flight/:id", flightController.getFlightDtById);
+
+flightRoute.delete("/cancel-flight/:id", flightController.cancelFlightById);
 
 export default flightRoute;
